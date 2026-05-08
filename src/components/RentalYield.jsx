@@ -10,8 +10,6 @@ const regions = {
   kolkata: { label: 'Kolkata', rent: 20000, price: 6000000 },
   ahmedabad: { label: 'Ahmedabad', rent: 20000, price: 6000000 },
   jaipur: { label: 'Jaipur', rent: 15000, price: 5000000 },
-  tier2: { label: 'Tier 2 City', rent: 12000, price: 3500000 },
-  tier3: { label: 'Tier 3 City', rent: 8000, price: 2500000 },
 }
 
 export default function RentalYield() {
