@@ -14,9 +14,23 @@ export default function RentalYield() {
 
   const format = (n) => new Intl.NumberFormat('en-IN').format(Math.round(n))
 
+  const getVerdict = () => {
+    const y = parseFloat(grossYield)
+    if (y < 3) return { label: 'Expensive', color: '#ef4444', msg: 'Property is overvalued relative to rental income. Low rental yield suggests poor investment return.' }
+    if (y < 6) return { label: 'Fair', color: '#f59e0b', msg: 'Property is reasonably priced. Average rental yield typical for stable markets.' }
+    return { label: 'Cheap', color: '#22c55e', msg: 'Property is undervalued relative to rental income. High rental yield indicates good investment potential.' }
+  }
+
+  const verdict = getVerdict()
+
   return (
     <div className="calculator">
-      <h2>Rental Yield Calculator</h2>
+      <div className="header-row">
+        <h2>Rental Yield Calculator</h2>
+        <span className={`verdict-badge verdict-${verdict.label.toLowerCase()}`} style={{ background: verdict.color }}>
+          {verdict.label}
+        </span>
+      </div>
       <div className="inputs">
         <label>Property Price (₹)
           <input type="range" min="500000" max="50000000" step="100000" value={price} onChange={e => setPrice(+e.target.value)} />
@@ -37,6 +51,10 @@ export default function RentalYield() {
         <div className="result-card"><span className="label">Annual Rent</span><span className="value">₹{format(annualRent)}</span></div>
         <div className="result-card"><span className="label">Annual Expenses</span><span className="value">₹{format(annualExpenses)}</span></div>
         <div className="result-card"><span className="label">Monthly Cash Flow</span><span className="value">₹{format(monthlyCashflow)}</span></div>
+        <div className="result-card verdict" style={{ borderColor: verdict.color }}>
+          <span className="label">Verdict</span>
+          <span className="value" style={{ color: verdict.color }}>{verdict.msg}</span>
+        </div>
       </div>
     </div>
   )
