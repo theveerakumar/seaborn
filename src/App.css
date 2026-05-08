@@ -163,6 +163,23 @@ body {
   font-weight: 600;
 }
 
+.region-select {
+  padding: 0.5rem 0.75rem;
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--surface2);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.region-select:hover,
+.region-select:focus {
+  border-color: var(--accent);
+}
+
 .results {
   display: grid;
   grid-template-columns: 1fr 1fr;

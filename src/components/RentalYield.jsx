@@ -1,9 +1,33 @@
 import { useState } from 'react'
 
+const regions = {
+  mumbai: { label: 'Mumbai', rent: 50000, price: 15000000 },
+  delhi: { label: 'Delhi NCR', rent: 35000, price: 10000000 },
+  bangalore: { label: 'Bangalore', rent: 35000, price: 9500000 },
+  hyderabad: { label: 'Hyderabad', rent: 30000, price: 8500000 },
+  pune: { label: 'Pune', rent: 28000, price: 8000000 },
+  chennai: { label: 'Chennai', rent: 25000, price: 7500000 },
+  kolkata: { label: 'Kolkata', rent: 20000, price: 6000000 },
+  ahmedabad: { label: 'Ahmedabad', rent: 20000, price: 6000000 },
+  jaipur: { label: 'Jaipur', rent: 15000, price: 5000000 },
+  tier2: { label: 'Tier 2 City', rent: 12000, price: 3500000 },
+  tier3: { label: 'Tier 3 City', rent: 8000, price: 2500000 },
+}
+
 export default function RentalYield() {
+  const [region, setRegion] = useState('')
   const [price, setPrice] = useState(5000000)
   const [rent, setRent] = useState(25000)
   const [expenses, setExpenses] = useState(10)
+
+  const selectRegion = (e) => {
+    const key = e.target.value
+    if (!key) return
+    const r = regions[key]
+    setRegion(key)
+    setPrice(r.price)
+    setRent(r.rent)
+  }
 
   const annualRent = rent * 12
   const annualExpenses = price * (expenses / 100)
@@ -32,6 +56,14 @@ export default function RentalYield() {
         </span>
       </div>
       <div className="inputs">
+        <label>Select Region
+          <select className="region-select" value={region} onChange={selectRegion}>
+            <option value="">— Select a city for typical rent —</option>
+            {Object.entries(regions).map(([key, r]) => (
+              <option key={key} value={key}>{r.label}</option>
+            ))}
+          </select>
+        </label>
         <label>Property Price (₹)
           <input type="range" min="500000" max="50000000" step="100000" value={price} onChange={e => setPrice(+e.target.value)} />
           <span className="value">₹{format(price)}</span>
