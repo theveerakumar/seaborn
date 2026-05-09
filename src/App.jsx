@@ -2,12 +2,14 @@ import { useState } from 'react'
 import RentalYield from './components/RentalYield'
 import EmiCalculator from './components/EmiCalculator'
 import Affordability from './components/Affordability'
+import StockAnalysis from './components/StockAnalysis'
 import './App.css'
 
 const tabs = [
   { id: 'rental', label: 'Rental Yield', component: RentalYield },
   { id: 'emi', label: 'EMI Calculator', component: EmiCalculator },
   { id: 'afford', label: 'Affordability', component: Affordability },
+  { id: 'stock', label: 'Stock Analysis', component: StockAnalysis },
 ]
 
 function App() {
