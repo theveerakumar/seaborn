@@ -32,7 +32,7 @@ function App() {
         <ActiveComponent />
       </main>
       <footer className="footer">
-        <p>Seaborn &copy; {new Date().getFullYear()}</p>
+        <p>Seaborn &copy; {new Date().getFullYear()}<span className="footer-rev"> rev {import.meta.env.VITE_GIT_COMMIT || 'dev'}</span></p>
       </footer>
     </div>
   )

@@ -228,5 +228,7 @@ body {
   font-size: 0.8rem;
 }
 
+.footer-rev { opacity: 0.5; font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.6rem; }
+
 
 
